@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeGuard Security Audit: demo-ai-store.lovable.app</title>
+    <style>
+        :root {
+            --bg: #090d16;
+            --surface: #111827;
+            --border: #1f293d;
+            --text: #94a3b8;
+            --text-heading: #f8fafc;
+            --cyan: #06b6d4;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+        .logo-area h1 {
+            color: var(--text-heading);
+            margin: 0 0 6px 0;
+            font-size: 26px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .score-pill {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 8px 18px;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 15px;
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .card-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .card-value {
+            color: var(--text-heading);
+            font-size: 18px;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+        th {
+            color: #64748b;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        .badge-danger { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .badge-warning { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .badge-neutral { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+        .patch-box {
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+        .patch-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-heading);
+        }
+        .copy-btn {
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .copy-btn:hover { background: #334155; }
+        .code-block {
+            margin: 0;
+            padding: 16px;
+            color: #38bdf8;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-area">
+                <h1>🛡️ VibeGuard Security Audit</h1>
+                <div>Target Domain: <strong style="color: var(--cyan);">demo-ai-store.lovable.app</strong> (lovable)</div>
+            </div>
+            <div class="score-pill">
+                <div>SCORE: 10/100</div>
+                <div style="font-size: 11px; font-weight: normal; margin-top: 2px;">CRITICAL RISK</div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-label">Supabase Ref</div>
+                <div class="card-value" style="font-family: monospace; font-size: 15px;">testref1234567890ab</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Exposed Tables</div>
+                <div class="card-value" style="color: #ef4444;">2 tables</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Total Leaked Rows</div>
+                <div class="card-value" style="color: #ef4444;">231 records</div>
+            </div>
+            <div class="card">
+                <div class="card-label">PII Detected</div>
+                <div class="card-value" style="font-size: 14px;">email, phone, total_price</div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 32px;">
+            <h3 style="color: var(--text-heading); margin-top: 0;">Exposed Database Endpoints</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Record Count</th>
+                        <th>Vulnerability</th>
+                        <th>Sensitive Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td style="font-weight: 600; color: #f8fafc;">profiles</td>
+            <td style="color: #ef4444; font-weight: bold;">142 rows</td>
+            <td><span class="badge badge-warning">Missing RLS</span></td>
+            <td><span class='badge badge-danger'>email</span><span class='badge badge-danger'>phone</span></td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight: 600; color: #f8fafc;">orders</td>
+            <td style="color: #ef4444; font-weight: bold;">89 rows</td>
+            <td><span class="badge badge-warning">Missing RLS</span></td>
+            <td><span class='badge badge-danger'>email</span><span class='badge badge-danger'>total_price</span></td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--text-heading); margin-top: 0;">⚡ Automated SQL Remediation</h3>
+            <p style="font-size: 14px; margin-bottom: 20px;">
+                Execute the SQL policies below directly in your Supabase SQL Editor to enforce Row-Level Security and prevent unauthorized public reading.
+            </p>
+            
+        <div class="patch-box">
+            <div class="patch-header">
+                <span>Row-Level Security Patch for <code>public.profiles</code></span>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy SQL', 2000)">Copy SQL</button>
+            </div>
+            <pre class="code-block">-- 1. Enable Row-Level Security on 'profiles'
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+
+-- 2. Remove default public permissions
+REVOKE ALL ON public.profiles FROM anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.profiles TO authenticated;
+
+-- 3. Restrict row reading to authenticated owner
+DROP POLICY IF EXISTS "Users can only read own profiles" ON public.profiles;
+CREATE POLICY "Users can only read own profiles"
+ON public.profiles
+FOR SELECT
+TO authenticated
+USING (auth.uid() = id);
+
+-- 4. Restrict row updates to authenticated owner
+DROP POLICY IF EXISTS "Users can only update own profiles" ON public.profiles;
+CREATE POLICY "Users can only update own profiles"
+ON public.profiles
+FOR UPDATE
+TO authenticated
+USING (auth.uid() = id);</pre>
+        </div>
+        
+        <div class="patch-box">
+            <div class="patch-header">
+                <span>Row-Level Security Patch for <code>public.orders</code></span>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy SQL', 2000)">Copy SQL</button>
+            </div>
+            <pre class="code-block">-- 1. Enable Row-Level Security on 'orders'
+ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+
+-- 2. Remove default public permissions
+REVOKE ALL ON public.orders FROM anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.orders TO authenticated;
+
+-- 3. Restrict row reading to authenticated owner
+DROP POLICY IF EXISTS "Users can only read own orders" ON public.orders;
+CREATE POLICY "Users can only read own orders"
+ON public.orders
+FOR SELECT
+TO authenticated
+USING (auth.uid() = id);
+
+-- 4. Restrict row updates to authenticated owner
+DROP POLICY IF EXISTS "Users can only update own orders" ON public.orders;
+CREATE POLICY "Users can only update own orders"
+ON public.orders
+FOR UPDATE
+TO authenticated
+USING (auth.uid() = id);</pre>
+        </div>
+        
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
+            Generated by VibeGuard Security Engine &bull; 2026-09-20 09:42:45 UTC &bull; Open Source Defensive Security
+        </div>
+    </div>
+</body>
+</html>
